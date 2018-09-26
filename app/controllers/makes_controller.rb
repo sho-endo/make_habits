@@ -8,7 +8,7 @@ class MakesController < ApplicationController
   def create
     @make = current_user.makes.build(make_params)
     if @make.save
-      redirect_to root_url
+      redirect_to "/rules/#{@make.id}/1"
     else
       render :new
     end

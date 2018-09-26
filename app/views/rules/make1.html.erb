@@ -1,0 +1,17 @@
+<u><h1 class="text-center">身につけたい習慣：<%= @make.title %></h1></u>
+
+<h2 class="text-center">まずはノルマを決めましょう。<br>初めはバカバカしいほど小さな習慣から始めることがコツです。</h2>
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <%= form_tag("/rules/#{@make.id}/2", method: "get") do %>
+      <div class="form-group">
+        <%= text_area_tag :norm, "", placeholder: "例）１日１回スクワットをする", class: "form-control" %>
+      </div>
+      
+      <div class="text-right">
+        <%= submit_tag "次へ", class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<u><h1 class="text-center">身につけたい習慣：<%= @make.title %></h1></u>
+<u><h1 class="text-center">挫折しそうになる状況：<%= @situation %></h1></u>
+
+<h2 class="text-center">
+  最後に、挫折しそうな状況になった時の<br>自分ルールを作りましょう。<br>
+  先ほどと同じように「もし〜になったら、〜をする」<br>というやり方で作ってください。<br>
+</h2>
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <%= form_for(@rule, url: "/rules/#{@make.id}/create") do |f|%>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: "例）やる気がでないなと思ったら、とりあえず１回だけ腕立て伏せをする。", class: "form-control" %>
+      </div>
+      
+      <div class="text-right">
+        <%= f.submit"次へ", class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>
