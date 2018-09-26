@@ -8,12 +8,22 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to "Make Habits", root_path, class: "navbar-brand" %>
+        <%= link_to "Make Habits!!", root_path, class: "navbar-brand" %>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "新規登録", signup_path %></li>
-          <li><a href="#">ログイン</a></li>
+          <% if logged_in? %>
+            <li>
+              <%= link_to current_user do %>
+                <%= current_user.name %>
+              <% end %>
+            </li>
+            <li><%= link_to "習慣を作る", "#" %></li>
+            <li><%= link_to "ログアウト", logout_path, method: "delete" %></li>
+          <% else %>
+            <li><%= link_to "新規登録", signup_path %></li>
+            <li><%= link_to "ログイン", login_path %></li>
+          <% end %>
         </ul>
       </div>
     </div>
