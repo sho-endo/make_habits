@@ -15,6 +15,8 @@ class MakesController < ApplicationController
   end
 
   def show
+    @make = Make.find(params[:id])
+    @rules = @make.rules
   end
   
   private

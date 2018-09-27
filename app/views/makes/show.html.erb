@@ -1,2 +1,16 @@
-<h1>Makes#show</h1>
-<p>Find me in app/views/makes/show.html.erb</p>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title"><%= @make.title %></h2>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% @rules.each do |rule| %>
+            <li><h3><%= rule.content %></h3></li>
+          <% end %>
+        </ul>
+      </div>
+  </div>
+  </div>
+</div>
