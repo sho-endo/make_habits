@@ -1,0 +1,17 @@
+<% habits.each do |habit| %>
+  <% rules = habit.rules %>
+  <div class="col-xs-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= link_to habit.title, habit %></h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% rules.each do |rule| %>
+            <li><%= rule.content %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
