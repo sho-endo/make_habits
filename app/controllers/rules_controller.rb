@@ -1,6 +1,7 @@
 class RulesController < ApplicationController
   before_action :require_user_logged_in
   before_action :get_make, only: [:make1, :make2, :make3, :make4, :make_create]
+  before_action :get_quit, only: [:quit1, :quit2, :quit_create]
   
   def make1
   end
@@ -44,17 +45,14 @@ class RulesController < ApplicationController
   end
   
   def quit1
-    @quit = Quit.find(params[:quit_id])
   end
   
   def quit2
-    @quit = Quit.find(params[:quit_id])
     @rule = @quit.rules.build
     @situation = params[:situation]
   end
   
   def quit_create
-    @quit = Quit.find(params[:quit_id])
     @rule = @quit.rules.build(rule_params)
     if @rule.save
       flash[:info] = "お疲れ様でした。自分ルールの完成です！！"
@@ -72,5 +70,9 @@ class RulesController < ApplicationController
   
   def get_make
     @make = Make.find(params[:make_id])
+  end
+  
+  def get_quit
+    @quit = Quit.find(params[:quit_id])
   end
 end
