@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:show]
+  before_action :correct_user, only: [:show]
+  before_action :forbid_login_user, only: [:new, :create]
   
   def new
     @user = User.new
@@ -24,5 +26,20 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+  
+  def correct_user
+    @user = User.find_by(id: params[:id])
+    unless current_user.id == @user.id
+      flash[:warning] = "権限がありません"
+      redirect_to current_user
+    end
+  end
+  
+  def forbid_login_user
+    if current_user
+      flash[:warning] = "すでにログインしています"
+      redirect_to current_user
+    end
   end
 end
