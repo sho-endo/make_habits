@@ -11,7 +11,7 @@
   <div class="col-xs-8 col-xs-offset-2">
     <%= form_for(@rule, url: "/quits/#{@quit.id}/create") do |f|%>
       <div class="form-group">
-        <%= f.text_area :content, placeholder: "例）歯磨きが終わったら、スクワットを１回やる。", class: "form-control" %>
+        <%= f.text_area :content, placeholder: "例）自分の部屋で暇になったら、とりあえず本を開く。", class: "form-control" %>
       </div>
       
       <div class="text-right">
