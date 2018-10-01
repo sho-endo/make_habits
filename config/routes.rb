@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: "toppages#index"
   
+  get "/habits/select", to:"habits#select"
+  
   get "/rules/:make_id/1", to: "rules#make1"
   get "/rules/:make_id/2", to: "rules#make2"
   post "/rules/:make_id/create", to: "rules#make_create"
