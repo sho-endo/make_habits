@@ -15,7 +15,7 @@ class RulesController < ApplicationController
   
   def make4
     @rule = @make.rules.build
-    @situation = params[:situation]
+    @obstacle = params[:obstacle]
   end
   
   def make_create
@@ -26,10 +26,10 @@ class RulesController < ApplicationController
     if path[:action] == "make2"
       if @rule.save
         flash[:info] = "１つ目の自分ルールを作成しました"
-        redirect_to "/rules/#{@make.id}/3"
+        redirect_to "/makes/#{@make.id}/3"
       else
         flash[:danger] = "保存に失敗しました"
-        redirect_back "/rules/#{@make.id}/2"
+        redirect_back(fallback_location: "/makes/#{@make.id}/2")
       end
     else
       if @rule.save
@@ -37,10 +37,32 @@ class RulesController < ApplicationController
         redirect_to @make
       else
         flash[:danger] = "保存に失敗しました"
-        redirect_back "/rules/#{@make.id}/4"
+        redirect_back(fallback_location: "/makes/#{@make.id}/4")
       end
     end
     
+  end
+  
+  def quit1
+    @quit = Quit.find(params[:quit_id])
+  end
+  
+  def quit2
+    @quit = Quit.find(params[:quit_id])
+    @rule = @quit.rules.build
+    @situation = params[:situation]
+  end
+  
+  def quit_create
+    @quit = Quit.find(params[:quit_id])
+    @rule = @quit.rules.build(rule_params)
+    if @rule.save
+      flash[:info] = "お疲れ様でした。自分ルールの完成です！！"
+      redirect_to @quit
+    else
+      flash[:danger] = "保存に失敗しました"
+      redirect_back(fallback_location: "/quits/#{@quit.id}/2")
+    end
   end
   
   private

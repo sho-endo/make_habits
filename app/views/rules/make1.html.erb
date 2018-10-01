@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
-    <%= form_tag("/rules/#{@make.id}/2", method: "get") do %>
+    <%= form_tag("/makes/#{@make.id}/2", method: "get") do %>
       <div class="form-group">
         <%= text_area_tag :norm, "", placeholder: "例）１日１回スクワットをする", class: "form-control" %>
       </div>

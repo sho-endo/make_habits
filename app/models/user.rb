@@ -8,4 +8,5 @@ class User < ApplicationRecord
   
   has_many :habits, dependent: :destroy
   has_many :makes, dependent: :destroy
+  has_many :quits, dependent: :destroy
 end

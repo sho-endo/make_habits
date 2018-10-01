@@ -8,8 +8,9 @@ class MakesController < ApplicationController
   def create
     @make = current_user.makes.build(make_params)
     if @make.save
-      redirect_to "/rules/#{@make.id}/1"
+      redirect_to "/makes/#{@make.id}/1"
     else
+      flash.now[:danger] = "内容を入力してください"
       render :new
     end
   end
