@@ -2,6 +2,7 @@ class RulesController < ApplicationController
   before_action :require_user_logged_in
   before_action :get_make, only: [:make1, :make2, :make3, :make4, :make_create]
   before_action :get_quit, only: [:quit1, :quit2, :quit_create]
+  before_action :forbid_direct_access
   
   def make1
   end
@@ -74,5 +75,12 @@ class RulesController < ApplicationController
   
   def get_quit
     @quit = Quit.find(params[:quit_id])
+  end
+  
+  def forbid_direct_access
+    if request.referer == nil
+      flash[:warning] = "権限がありません"
+      redirect_to current_user
+    end
   end
 end
