@@ -3,7 +3,7 @@
     <h1>身につけたい習慣はなんですか？</h1>
     <%= form_for(@make) do |f| %>
       <div class="form-group">
-        <%= f.text_field :title, placeholder: "例）運動", class: "form-control" %>
+        <%= f.text_field :title, placeholder: "例）運動", required: true, class: "form-control" %>
       </div>
       
       <div class="text-right">

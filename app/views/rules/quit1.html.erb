@@ -9,7 +9,7 @@
   <div class="col-xs-8 col-xs-offset-2">
     <%= form_tag("/quits/#{@quit.id}/2", method: "get") do %>
       <div class="form-group">
-        <%= text_area_tag :situation, "", placeholder: "例）自分の部屋で暇になったら", class: "form-control" %>
+        <%= text_area_tag :situation, "", placeholder: "例）自分の部屋で暇になったら", required: true, class: "form-control" %>
       </div>
       
       <div class="text-right">

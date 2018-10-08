@@ -6,7 +6,7 @@
   <div class="col-xs-8 col-xs-offset-2">
     <%= form_tag("/makes/#{@make.id}/4", method: "get") do %>
       <div class="form-group">
-        <%= text_field_tag :obstacle, "", placeholder: "例）やる気がでない", class: "form-control" %>
+        <%= text_field_tag :obstacle, "", placeholder: "例）やる気がでない", required: true, class: "form-control" %>
       </div>
       
       <div class="text-right">

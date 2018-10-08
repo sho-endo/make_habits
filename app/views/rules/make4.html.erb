@@ -10,7 +10,7 @@
   <div class="col-xs-8 col-xs-offset-2">
     <%= form_for(@rule, url: "/makes/#{@make.id}/create") do |f|%>
       <div class="form-group">
-        <%= f.text_area :content, placeholder: "例）やる気がでないなと思ったら、とりあえず１回だけ腕立て伏せをする。", class: "form-control" %>
+        <%= f.text_area :content, placeholder: "例）やる気がでないなと思ったら、とりあえず１回だけ腕立て伏せをする。", required: true, class: "form-control" %>
       </div>
       
       <div class="text-right">

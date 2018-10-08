@@ -3,7 +3,7 @@
     <h1>やめたい習慣はなんですか？</h1>
     <%= form_for(@quit) do |f| %>
       <div class="form-group">
-        <%= f.text_field :title, placeholder: "例）ついスマホを見てしまう", class: "form-control" %>
+        <%= f.text_field :title, placeholder: "例）ついスマホを見てしまう", required: true, class: "form-control" %>
       </div>
       
       <div class="text-right">
