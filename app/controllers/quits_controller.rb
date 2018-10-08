@@ -1,5 +1,6 @@
 class QuitsController < ApplicationController
   before_action :require_user_logged_in
+  before_action :correct_user, only: [:show]
 
   def new
     @quit = current_user.quits.build
@@ -23,5 +24,14 @@ class QuitsController < ApplicationController
   private
   def quit_params
     params.require(:quit).permit(:title)
+  end
+  
+  def correct_user
+    quit = Quit.find_by(id: params[:id])
+    user = quit.user if quit
+    unless user && current_user.id == user.id
+      flash[:warning] = "権限がありません"
+      redirect_to current_user
+    end
   end
 end

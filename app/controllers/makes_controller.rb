@@ -1,5 +1,6 @@
 class MakesController < ApplicationController
   before_action :require_user_logged_in
+  before_action :correct_user, only: [:show]
   
   def new
     @make = current_user.makes.build
@@ -23,5 +24,14 @@ class MakesController < ApplicationController
   private
   def make_params
     params.require(:make).permit(:title)
+  end
+  
+  def correct_user
+    make = Make.find_by(id: params[:id])
+    user = make.user if make
+    unless user && current_user.id == user.id
+      flash[:warning] = "権限がありません"
+      redirect_to current_user
+    end
   end
 end
