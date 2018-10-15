@@ -14,7 +14,6 @@ class UsersController < ApplicationController
       flash[:success] = "ユーザーを新規作成しました"
       redirect_to @user
     else
-      flash.now[:danger] = "ユーザーの作成に失敗しました"
       render :new
     end
   end
