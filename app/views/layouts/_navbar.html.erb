@@ -15,6 +15,7 @@
           <% if logged_in? %>
             <li>
               <%= link_to current_user do %>
+                <img src="<%= gravatar_url(current_user, size: 20) %>" alt="" class="img-circle">
                 <%= current_user.name %>
               <% end %>
             </li>
